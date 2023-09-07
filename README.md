@@ -1,5 +1,3 @@
-Peço desculpas pela confusão anterior. Aqui está o README com o bloco de código Markdown ajustado:
-
 ```markdown
 # Jobsity Technical Test - Data Ingestion and API
 
@@ -13,6 +11,7 @@ Welcome to the Jobsity Technical Test! This project showcases a Flask API for da
 - [Requirements](#requirements)
 - [Getting Started](#getting-started)
 - [API Endpoints](#api-endpoints)
+- [Example Usage](#example-usage)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -78,6 +77,7 @@ To get started, follow these simple installation steps:
 
    ```bash
    python main.py
+   ```
 
 8. The API should now be accessible at `http://localhost:5000`. 🎉
 
@@ -99,6 +99,82 @@ Now that the application is up and running, here are some tips to get started:
 - `/total_records`: Retrieves the total number of records in the database.
 - `/select_all_records`: Retrieves all records from the database.
 
+## Example Usage
+
+Here are examples of how to use the API endpoints:
+
+### `/ingestion_status`
+
+- **Method:** GET
+- **Description:** Provides information about the last data ingestion status.
+
+Example usage:
+```bash
+curl http://127.0.0.1:5000/ingestion_status
+```
+
+### `/weekly_average/14.4/49.9/14.6/50.1`
+
+- **Method:** GET
+- **Description:** Calculates the weekly average of trips within a bounding box.
+
+Example usage:
+```bash
+curl http://127.0.0.1:5000/weekly_average/14.4/49.9/14.6/50.1
+```
+
+### `/datasource_regions/funny_car`
+
+- **Method:** GET
+- **Description:** Retrieves the regions associated with a specific data source.
+
+Example usage:
+```bash
+curl http://127.0.0.1:5000/datasource_regions/funny_car
+```
+
+### `/weekly_average/Prague`
+
+- **Method:** GET
+- **Description:** Calculates the weekly average of trips for a specific region.
+
+Example usage:
+```bash
+curl http://127.0.0.1:5000/weekly_average/Prague
+```
+
+### `/most_recent_datasource_for_top_regions`
+
+- **Method:** GET
+- **Description:** Identifies the most recent data source for the top regions with the highest trip counts.
+
+Example usage:
+```bash
+curl http://127.0.0.1:5000/most_recent_datasource_for_top_regions
+```
+
+### `/total_records`
+
+- **Method:** GET
+- **Description:** Retrieves the total number of records in the database.
+
+Example usage:
+```bash
+curl http://127.0.0.1:5000/total_records
+```
+
+### `/select
+
+_all_records`
+
+- **Method:** GET
+- **Description:** Retrieves all records from the database.
+
+Example usage:
+```bash
+curl http://127.0.0.1:5000/select_all_records
+```
+
 ## Contributing
 
 We welcome contributions! If you find any issues or have ideas for improvements, please open an issue or create a pull request.
@@ -111,5 +187,4 @@ Let's make an impact together! 🚀 Join Jobsity today!
 
 ![Jobsity Team](https://example.com/jobsity_team_photo.jpg)
 ```
-
-Agora o bloco de código Markdown está formatado corretamente. Basta copiar e colar no seu arquivo README.md. Boa sorte com a sua candidatura na Jobsity!
+```markdown
