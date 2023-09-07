@@ -1,14 +1,18 @@
-# /tripalytics/utils/data_ingestion.py
-
 import csv
 from datetime import datetime
-from app.database.models import Trip, IngestionLog  # Importe IngestionLog aqui
+from app.database.models import Trip, IngestionLog  # Import IngestionLog here
 from app.database.session import SessionLocal as Session
 from sqlalchemy import func, extract
 
 def parse_csv_line(line):
     """
     Parse a line from the CSV into a Trip object.
+
+    Args:
+        line (list): A list containing CSV data for a single trip.
+
+    Returns:
+        Trip: A Trip object representing the parsed data.
     """
     region, origin_coord, destination_coord, date_time, datasource = line
     trip = Trip(
@@ -23,6 +27,12 @@ def parse_csv_line(line):
 def ingest_csv_data(filename):
     """
     Ingest data from the CSV into the database.
+
+    Args:
+        filename (str): The path to the CSV file to be ingested.
+
+    Returns:
+        None
     """
     with open(filename, 'r', encoding='utf-8') as file:
         reader = csv.reader(file)
@@ -36,13 +46,13 @@ def ingest_csv_data(filename):
                 session.add(trip)
                 record_count += 1
 
-            # Adicione informações sobre a ingestão ao IngestionLog
+            # Add ingestion information to the IngestionLog
             ingestion_log = IngestionLog(records_added=record_count, status="success")
             session.add(ingestion_log)
 
             session.commit()
         except Exception as e:
-            # No caso de um erro, adicione um registro de falha
+            # In case of an error, add a failure record
             ingestion_log = IngestionLog(records_added=record_count, status=f"failed - {str(e)}")
             session.add(ingestion_log)
             session.commit()
@@ -51,10 +61,12 @@ def ingest_csv_data(filename):
         finally:
             session.close()
 
-
 def group_trips_by_hour():
     """
     Group trips with similar origin, destination, and time of day.
+
+    Returns:
+        list: A list of grouped trips with hour-wise counts.
     """
     session = Session()
     try:
