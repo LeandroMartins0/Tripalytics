@@ -1,5 +1,3 @@
-Claro! Abaixo está um exemplo de um arquivo `README.md` adequado e bem configurado para uma entrega de teste técnico para a empresa Jobsity, incluindo instruções de instalação, requisitos e um toque de emoção:
-
 ```markdown
 # Jobsity Technical Test - Data Ingestion and API
 
@@ -37,13 +35,13 @@ To get started, follow these simple installation steps:
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/yourusername/jobsity-technical-test.git
+   git clone https://github.com/LeandroMartins0/Tripalytics.git
    ```
 
 2. Navigate to the project folder:
 
    ```bash
-   cd jobsity-technical-test
+   cd Tripalytics
    ```
 
 3. Create a virtual environment (optional but recommended):
@@ -112,5 +110,3 @@ Let's make an impact together! 🚀 Join Jobsity today!
 
 ![Jobsity Team](https://example.com/jobsity_team_photo.jpg)
 ```
-
-Neste README, você encontrará instruções claras de instalação, requisitos, uma breve introdução, uma seção de endpoints da API, informações sobre contribuições e a licença. Lembre-se de substituir os links e as informações genéricas pelas informações específicas do seu projeto e da empresa Jobsity. Adicionar emojis, como você mencionou, pode tornar o README mais atraente e amigável. Certifique-se de adicionar o logotipo da empresa Jobsity e fotos relevantes para dar um toque pessoal.
