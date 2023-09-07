@@ -34,6 +34,14 @@ def weekly_average_for_bounding_box(session, x1, y1, x2, y2):
     
     return [{"week": r[0].strftime('%Y-%m-%d'), "count": r[1]} for r in results]
 
+def weekly_average_by_region(session, region):
+    results = session.query(
+        func.date_trunc('week', Trip.datetime).label('week_start'),
+        func.count(Trip.id)
+    ).filter(Trip.region == region).group_by(func.date_trunc('week', Trip.datetime)).all()
+    
+    return [{"week": r[0].strftime('%Y-%m-%d'), "count": r[1]} for r in results]
+
 
 def regions_for_datasource(session, datasource):
     results = session.query(Trip.region).filter(Trip.datasource == datasource).distinct().all()
