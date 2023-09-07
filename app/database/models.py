@@ -16,6 +16,15 @@ class Trip(Base):
     datetime = Column(DateTime, index=True)
     datasource = Column(String, index=True)
 
+    def serialize(self):
+        return {
+            "id": self.id,
+            "region": self.region,
+            "origin_coord": self.origin_coord,
+            "destination_coord": self.destination_coord,
+            "datetime": self.datetime.strftime("%Y-%m-%d %H:%M:%S"),
+            "datasource": self.datasource
+        }
 
 
 class IngestionLog(Base):

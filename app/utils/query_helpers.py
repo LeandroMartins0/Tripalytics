@@ -1,6 +1,8 @@
 from sqlalchemy import func, and_
 from datetime import datetime
 from app.database.models import Trip
+from app.database.models import Trip
+from sqlalchemy.orm import Session
 
 def get_last_ingestion_status(session):
     """
@@ -36,6 +38,12 @@ def weekly_average_for_bounding_box(session, x1, y1, x2, y2):
 def regions_for_datasource(session, datasource):
     results = session.query(Trip.region).filter(Trip.datasource == datasource).distinct().all()
     return [r[0] for r in results]
+
+def total_records_in_database(session: Session):
+    return session.query(Trip).count()
+
+def select_all_records(session: Session):
+    return session.query(Trip).all()
 
 def most_recent_datasource_for_top_regions(session):
     # Identificar as duas regiões com mais viagens
