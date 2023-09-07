@@ -5,3 +5,4 @@ python-dotenv==0.15.0
 sqlalchemy==1.4.15  # Atualize para a versão que estiver usando
 psycopg2-binary==2.8.6  # Driver para PostgreSQL, atualize para a versão que estiver usando
 Flask
+pytest
