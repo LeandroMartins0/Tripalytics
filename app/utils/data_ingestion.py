@@ -1,9 +1,28 @@
+"""
+data_ingestion.py
+
+Provides functionalities for ingesting, processing, and grouping data from CSV files.
+
+Modules:
+- csv: Used for reading CSV files.
+- datetime: Provides functionalities to work with dates and times.
+- app.database.models: Contains ORM models for the database.
+- app.database.session: Provides database session functionalities.
+- sqlalchemy: Provides ORM and query functionalities.
+"""
+
+# -------------------------
+# Imports
+# -------------------------
 import csv
 from datetime import datetime
 from app.database.models import Trip, IngestionLog
 from app.database.session import SessionLocal as Session
 from sqlalchemy import func, extract
 
+# -------------------------
+# Helper Functions
+# -------------------------
 def parse_csv_line(line):
     """
     Parse a line from the CSV into a Trip object.
@@ -103,3 +122,10 @@ def group_trips_by_hour():
         print(f"Error occurred: {e}")
     finally:
         session.close()
+
+# For testing and debbuging
+# if __name__ == '__main__':
+#     # Sample code for testing
+#     ingest_csv_data('sample_data.csv')
+#     grouped_data = group_trips_by_hour()
+#     print(grouped_data)

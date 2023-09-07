@@ -1,9 +1,25 @@
+"""
+query_helpers.py
+
+Provides helper functions to query various information from the database.
+
+Modules:
+- sqlalchemy: ORM and query functionalities.
+- datetime: Provides functionalities to work with dates and times.
+- app.database.models: Contains ORM models for the database.
+"""
+
+# -------------------------
+# Imports
+# -------------------------
 from sqlalchemy import func, and_
 from datetime import datetime
 from app.database.models import Trip
-from app.database.models import Trip
 from sqlalchemy.orm import Session
 
+# -------------------------
+# Helper Functions
+# -------------------------
 def get_last_ingestion_status(session: Session):
     """
     Returns the last ingestion date, records added, and if it was successful.
@@ -137,3 +153,8 @@ def most_recent_datasource_for_top_regions(session: Session):
             result[region] = {'datasource': datasource, 'datetime': max_datetime}
     
     return result
+
+# For testing and debbuging
+# if __name__ == '__main__':
+    # Sample code for testing
+    # (You can write some test or demo code here if you want)

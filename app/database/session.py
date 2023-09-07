@@ -1,16 +1,40 @@
+"""
+session.py
+
+Manages the database session configuration and provides utility functions
+related to database initialization.
+
+Modules:
+- SQLAlchemy: ORM for database interactions.
+- .models: Imports the Base class which contains the defined database models.
+"""
+
+# -------------------------
+# Imports
+# -------------------------
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from .models import Base
 
-# Replace DATABASE_URL with your actual database connection URL
+# -------------------------
+# Constants
+# -------------------------
+
+# The database connection URL. Replace with your actual database connection URL.
 DATABASE_URL = "postgresql://postgres:1234@localhost:5432/tripalytics"
 
-# Create a SQLAlchemy engine for the database connection
+# -------------------------
+# Database Engine Configuration
+# -------------------------
 engine = create_engine(DATABASE_URL)
 
-# Create a session factory using SQLAlchemy's sessionmaker
+# Create a session factory using SQLAlchemy's sessionmaker. 
+# This session factory will be used to create individual database sessions.
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+# -------------------------
+# Utility Functions
+# -------------------------
 def init_db():
     """
     Initialize the database schema by creating tables defined in the Base class.
