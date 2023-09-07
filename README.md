@@ -7,6 +7,7 @@ Hey there! Welcome aboard Tripalytics! Here, we've crafted a nifty Flask API tha
 
 ## 📜 Table of Contents
 - [What's Inside?](#whats-inside)
+- [Documentation](#documentation)
 - [Setting Things Up](#setting-things-up)
   - [Requirements](#requirements)
   - [Installation & Setup](#installation--setup)
@@ -20,6 +21,14 @@ Hey there! Welcome aboard Tripalytics! Here, we've crafted a nifty Flask API tha
 Dive deep into the world of data with our Flask API. It munches on CSV files, stores data in PostgreSQL, and even plays with them to give you cool insights.
 
 ![Jobsity Magic](https://example.com/jobsity_logo.png)
+
+## 📖 Documentation
+
+We've documented everything! Dive into our:
+
+- **[ER Model](./project_documentation/ER_model/)**
+- **[Data Catalog](./project_documentation/data_catalog/)**
+- **[AWS Architecture Sample](./project_documentation/aws_architecture/)**
 
 ## 🛠 Setting Things Up
 
@@ -79,6 +88,8 @@ We got tools! Here's a quick list:
 - `/weekly_average/<float:x1>/<float:y1>/<float:x2>/<float:y2>`: Weekly trip avg within a box.
 - `/weekly_average/<string:region>`: Weekly trip avg by region.
 - `/datasource_regions/<string:datasource>`: Regions per data source.
+- `/grouped_trips`: Trips grouped by origin, destination, and time.
+- `/latest_region/<string:datasource>`: Latest region for a given datasource.
 ...and a few more. Explore!
 
 ## 🚀 Test Drive!
@@ -87,13 +98,73 @@ You wanna play? Check out these examples using the API endpoints:
 
 ### `/ingestion_status`
 
-**Method:** GET  
-Fire up your terminal or Postman and see the magic:
+- **Method:** GET
+- **Description:** Provides information about the last data ingestion status.
+
+Example usage:
 ```bash
 curl http://127.0.0.1:5000/ingestion_status
 ```
 
-...similarly for the others. Dive in!
+### `/weekly_average/14.4/49.9/14.6/50.1`
+
+- **Method:** GET
+- **Description:** Calculates the weekly average of trips within a bounding box.
+
+Example usage:
+```bash
+curl http://127.0.0.1:5000/weekly_average/14.4/49.9/14.6/50.1
+```
+
+### `/datasource_regions/funny_car`
+
+- **Method:** GET
+- **Description:** Retrieves the regions associated with a specific data source.
+
+Example usage:
+```bash
+curl http://127.0.0.1:5000/datasource_regions/funny_car
+```
+
+### `/weekly_average/Prague`
+
+- **Method:** GET
+- **Description:** Calculates the weekly average of trips for a specific region.
+
+Example usage:
+```bash
+curl http://127.0.0.1:5000/weekly_average/Prague
+```
+
+### `/most_recent_datasource_for_top_regions`
+
+- **Method:** GET
+- **Description:** Identifies the most recent data source for the top regions with the highest trip counts.
+
+Example usage:
+```bash
+curl http://127.0.0.1:5000/most_recent_datasource_for_top_regions
+```
+
+### `/total_records`
+
+- **Method:** GET
+- **Description:** Retrieves the total number of records in the database.
+
+Example usage:
+```bash
+curl http://127.0.0.1:5000/total_records
+```
+
+### `/select_all_records`
+
+- **Method:** GET
+- **Description:** Retrieves all records from the database.
+
+Example usage:
+```bash
+curl http://127.0.0.1:5000/select_all_records
+```
 
 ## 🤝 Chip In!
 
@@ -107,5 +178,3 @@ Join the fun! 🎉 Be a part of Jobsity!
 
 ![Cool Jobsity Team](https://example.com/jobsity_team_photo.jpg)
 ```
-
-This informal and reader-friendly version of the README aims to capture the reader's attention and make the experience enjoyable.
