@@ -35,7 +35,6 @@ class WeeklyAverageByRegion(Resource):
             result = weekly_average_by_region(session, region)
         return jsonify(result)
 
-
 class DataSourceRegions(Resource):
     def get(self, datasource):
         with Session() as session:
