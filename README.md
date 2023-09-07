@@ -185,4 +185,3 @@ Let's make an impact together! 🚀 Join Jobsity today!
 
 ![Jobsity Team](https://example.com/jobsity_team_photo.jpg)
 ```
-```markdown
