@@ -78,7 +78,6 @@ To get started, follow these simple installation steps:
 
    ```bash
    python main.py
-   ```
 
 8. The API should now be accessible at `http://localhost:5000`. 🎉
 
