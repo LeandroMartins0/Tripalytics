@@ -1,11 +1,17 @@
+# System imports
 from datetime import datetime
-from sqlalchemy import create_engine, Column, Integer, String, DateTime, Text
+
+# Third-party imports
+from sqlalchemy import create_engine, Column, Integer, String, DateTime, Text, update
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.exc import SQLAlchemyError
 
+# Define the declarative base
 Base = declarative_base()
 
+
+# ORM Model for Trip
 class Trip(Base):
     """
     Represents a trip record in the database.
@@ -64,6 +70,8 @@ class Trip(Base):
             session.rollback()
             return None
 
+
+# ORM Model for IngestionLog
 class IngestionLog(Base):
     """
     Represents a log entry for data ingestion.
@@ -75,6 +83,7 @@ class IngestionLog(Base):
         timestamp (datetime): Timestamp of the log entry.
     """
     __tablename__ = "ingestion_log"
+    
     id = Column(Integer, primary_key=True, index=True)
     records_added = Column(Integer, index=True)
     status = Column(Text, index=True)
