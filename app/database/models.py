@@ -2,6 +2,7 @@ from datetime import datetime
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, Text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.exc import SQLAlchemyError
 
 Base = declarative_base()
 
@@ -42,6 +43,26 @@ class Trip(Base):
             "datasource": self.datasource
         }
 
+    @staticmethod
+    def create_trip(session, trip_data):
+        """
+        Create a new Trip record.
+
+        Args:
+            session (Session): SQLAlchemy session.
+            trip_data (dict): Data for creating a new trip.
+
+        Returns:
+            int: The ID of the newly created trip, or None if there was an error.
+        """
+        try:
+            new_trip = Trip(**trip_data)
+            session.add(new_trip)
+            session.commit()
+            return new_trip.id
+        except SQLAlchemyError as e:
+            session.rollback()
+            return None
 
 class IngestionLog(Base):
     """
@@ -58,3 +79,24 @@ class IngestionLog(Base):
     records_added = Column(Integer, index=True)
     status = Column(Text, index=True)
     timestamp = Column(DateTime, index=True, default=datetime.utcnow)
+
+    @staticmethod
+    def create_log_entry(session, log_data):
+        """
+        Create a new IngestionLog entry.
+
+        Args:
+            session (Session): SQLAlchemy session.
+            log_data (dict): Data for creating a new log entry.
+
+        Returns:
+            int: The ID of the newly created log entry, or None if there was an error.
+        """
+        try:
+            new_log_entry = IngestionLog(**log_data)
+            session.add(new_log_entry)
+            session.commit()
+            return new_log_entry.id
+        except SQLAlchemyError as e:
+            session.rollback()
+            return None

@@ -52,7 +52,7 @@ def ingest_csv_data(filename):
 
             session.commit()
         except Exception as e:
-            # In case of an error, add a failure record
+            # In case of an error, add a failure record and print the error
             ingestion_log = IngestionLog(records_added=record_count, status=f"failed - {str(e)}")
             session.add(ingestion_log)
             session.commit()
@@ -60,6 +60,7 @@ def ingest_csv_data(filename):
             print(f"Error occurred: {e}")
         finally:
             session.close()
+
 
 def group_trips_by_hour():
     """

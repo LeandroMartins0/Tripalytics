@@ -95,7 +95,19 @@ api.add_resource(TotalRecords, "/total_records")
 api.add_resource(SelectAllRecords, "/select_all_records")
 
 def main():
+    """
+    Main function to set up the database, perform data ingestion, aggregation, and run the Flask app.
+    """
     setup_database()
+
+    # Path to the CSV file
+    csv_file_path = "data/trips.csv"
+
+    # Perform data ingestion from the CSV file
+    ingest_csv_data(csv_file_path)
+
+    # Perform data aggregation
+    group_trips_by_hour()
 
     # Run the Flask app
     app.run(debug=True)
