@@ -1,5 +1,3 @@
-Alright! I've gone through the provided README and enhanced it to be more informal and reader-friendly, while keeping all essential details intact:
-
 ```markdown
 # 🚗 Tripalytics - Your Trip Analyst! 📊
 
