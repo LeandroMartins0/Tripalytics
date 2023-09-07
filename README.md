@@ -1,3 +1,5 @@
+Peço desculpas pela confusão anterior. Aqui está o README com o bloco de código Markdown ajustado:
+
 ```markdown
 # Jobsity Technical Test - Data Ingestion and API
 
@@ -110,3 +112,5 @@ Let's make an impact together! 🚀 Join Jobsity today!
 
 ![Jobsity Team](https://example.com/jobsity_team_photo.jpg)
 ```
+
+Agora o bloco de código Markdown está formatado corretamente. Basta copiar e colar no seu arquivo README.md. Boa sorte com a sua candidatura na Jobsity!
