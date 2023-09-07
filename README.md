@@ -163,9 +163,7 @@ Example usage:
 curl http://127.0.0.1:5000/total_records
 ```
 
-### `/select
-
-_all_records`
+### `/select_all_records`
 
 - **Method:** GET
 - **Description:** Retrieves all records from the database.
