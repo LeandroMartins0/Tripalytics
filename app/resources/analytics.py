@@ -2,7 +2,7 @@ from flask import jsonify
 from flask_restful import Resource
 
 # Import your session and helper functions
-from app.database.session import Session
+from app.database.session import SessionLocal as Session
 from app.utils.query_helpers import (
     weekly_average_for_bounding_box,
     weekly_average_by_region,

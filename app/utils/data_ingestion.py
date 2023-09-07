@@ -1,6 +1,6 @@
 import csv
 from datetime import datetime
-from app.database.models import Trip, IngestionLog  # Import IngestionLog here
+from app.database.models import Trip, IngestionLog
 from app.database.session import SessionLocal as Session
 from sqlalchemy import func, extract
 
@@ -43,8 +43,21 @@ def ingest_csv_data(filename):
             record_count = 0
             for line in reader:
                 trip = parse_csv_line(line)
-                session.add(trip)
-                record_count += 1
+
+                # Check if the trip already exists
+                existing_trip = session.query(Trip).filter(
+                    Trip.region == trip.region,
+                    Trip.origin_coord == trip.origin_coord,
+                    Trip.destination_coord == trip.destination_coord,
+                    Trip.datetime == trip.datetime
+                ).one_or_none()
+
+                if existing_trip:
+                    # Update logic (if needed, otherwise skip)
+                    existing_trip.datasource = trip.datasource  # as an example
+                else:
+                    session.add(trip)
+                    record_count += 1
 
             # Add ingestion information to the IngestionLog
             ingestion_log = IngestionLog(records_added=record_count, status="success")
@@ -60,6 +73,7 @@ def ingest_csv_data(filename):
             print(f"Error occurred: {e}")
         finally:
             session.close()
+
 
 
 def group_trips_by_hour():
