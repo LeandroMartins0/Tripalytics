@@ -1,5 +1,3 @@
-
-```markdown
 # 🚗 Tripalytics: Analyzing Your Journeys 📊
 
 Welcome to Tripalytics, a dynamic Flask API that seamlessly ingests CSV data to provide insightful travel analytics.
