@@ -2,7 +2,6 @@ fastapi==0.63.0
 psycopg2-binary==2.8.6
 uvicorn==0.13.4
 python-dotenv==0.15.0
-sqlalchemy==1.4.15  # Atualize para a versão que estiver usando
-psycopg2-binary==2.8.6  # Driver para PostgreSQL, atualize para a versão que estiver usando
-Flask
-great_expectations
+sqlalchemy==1.4.15
+Flask==1.1.2 
+great_expectations==0.13.19

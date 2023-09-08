@@ -176,5 +176,6 @@ We're all friends here! This project is under the [MIT License](LICENSE). Use, m
 
 Join the fun! 🎉 Be a part of Jobsity!
 
-![Cool Jobsity Team](https://example.com/jobsity_team_photo.jpg)
+![Cool Jobsity Team](./project_documentation/image/jobsity.png)
+
 ```
