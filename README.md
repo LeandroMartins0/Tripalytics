@@ -36,13 +36,13 @@ Let's get this party started! 🎉
 
 ### Requirements
 
-- A love for Python (3.6+ should do)
-- PostgreSQL - 'cause where else would we keep our secrets?
-- `pip` - Python's little helper
-
+- Python (3.6+ should do)
+- Pip (23.2.0 or later)
+- PostgreSQL - Create a database named "triptalytics" with the password "1234"
+  
 ### Installation & Setup
 
-1. Steal...err, I mean clone our code:
+1. Clone our code:
    ```bash
    git clone https://github.com/LeandroMartins0/Tripalytics.git
    ```
@@ -52,34 +52,20 @@ Let's get this party started! 🎉
    cd Tripalytics
    ```
 
-3. Let's create some isolated magic (optional but cool):
-   ```bash
-   python -m venv venv
-   ```
-
-4. Power up the magic:
-   - For our Windows buddies:
-     ```bash
-     venv\Scripts\activate
-     ```
-   - For the macOS and Linux rockstars:
-     ```bash
-     source venv/bin/activate
-     ```
-
-5. Time for some more magic (dependencies, duh!):
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-6. Whisper to PostgreSQL - tell it your secrets in `app/database/session.py`.
+4. Set up PostgreSQL:
+   Ensure that PostgreSQL is set up with a database named "triptalytics" and the password is set to "1234". Modify the connection settings in `app/database/session.py` if needed.
 
-7. Fire up the engines!
+5. Fire up the engines!
    ```bash
    python main.py
    ```
 
-8. And voilà! Catch the action at `http://localhost:5000`. 💥
+6. And voilà! Catch the action at `http://localhost:5000`. 💥
 
 ## 🎯 APIs: What Can You Do?
 
@@ -88,8 +74,6 @@ We got tools! Here's a quick list:
 - `/weekly_average/<float:x1>/<float:y1>/<float:x2>/<float:y2>`: Weekly trip avg within a box.
 - `/weekly_average/<string:region>`: Weekly trip avg by region.
 - `/datasource_regions/<string:datasource>`: Regions per data source.
-- `/grouped_trips`: Trips grouped by origin, destination, and time.
-- `/latest_region/<string:datasource>`: Latest region for a given datasource.
 ...and a few more. Explore!
 
 ## 🚀 Test Drive!
@@ -177,5 +161,4 @@ We're all friends here! This project is under the [MIT License](LICENSE). Use, m
 Join the fun! 🎉 Be a part of Jobsity!
 
 ![Cool Jobsity Team](./project_documentation/image/jobsity.png)
-
 ```
